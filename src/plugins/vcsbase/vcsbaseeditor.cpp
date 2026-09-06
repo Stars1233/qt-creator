@@ -433,7 +433,7 @@ bool UrlTextCursorHandler::findContentsUnderCursor(const QTextCursor &cursor)
                 const QRegularExpressionMatch match = i.next();
                 const int urlMatchIndex = match.capturedStart(r.matchNumber);
                 const QString url = match.captured(r.matchNumber);
-                if (urlMatchIndex <= cursorCol && cursorCol <= urlMatchIndex + url.size()) {
+                if (urlMatchIndex <= cursorCol && cursorCol < urlMatchIndex + url.size()) {
                     m_urlData.startColumn = urlMatchIndex;
                     m_urlData.url = r.urlPrefix + url;
                     m_urlData.urlLength = url.size();
